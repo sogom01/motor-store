@@ -1,0 +1,95 @@
+---
+const links = [
+  { href: '#catalogo',    label: 'Repuestos' },
+  { href: '#servicios',   label: 'Taller' },
+  { href: '#testimonios', label: 'Clientes' },
+  { href: '#faq',         label: 'FAQ' },
+];
+---
+
+<nav id="main-nav" class="fixed left-0 right-0 z-50 transition-all duration-300 py-4" style="top: var(--nav-top, 40px);">
+  <div class="max-w-[1320px] mx-auto px-6 md:px-10">
+    <div class="flex items-center justify-between">
+
+      <a href="#" class="flex items-center gap-3 group">
+        <!-- Logo mark -->
+        <div class="w-8 h-8 bg-[#E8520A] flex items-center justify-center shrink-0 group-hover:bg-[#B53D00] transition-colors">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#100D08" stroke-width="2.5" stroke-linecap="round">
+            <circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/>
+            <path d="M5 14l3-7h8l3 7"/><path d="M8 7l2-4h4l2 4"/>
+          </svg>
+        </div>
+        <span class="font-display text-[1.5rem] tracking-[0.08em] text-[#EDE5D8]">MOTOR STORE</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 list-none">
+        {links.map(l => (
+          <li>
+            <a href={l.href}
+               class="text-[0.72rem] font-bold tracking-[0.12em] uppercase text-[rgba(237,229,216,0.5)] hover:text-[#EDE5D8] transition-colors relative after:absolute after:bottom-[-3px] after:left-0 after:h-px after:w-0 after:bg-[#E8520A] after:transition-all hover:after:w-full">
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <a href="#contacto" class="hidden md:inline-flex btn-primary" style="padding: 0.6rem 1.4rem; font-size:0.72rem;">
+          Cotizar ahora
+        </a>
+        <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1 bg-transparent border-none cursor-pointer" aria-label="Abrir menú" aria-expanded="false">
+          <span class="block w-6 h-0.5 bg-[#EDE5D8] transition-all"></span>
+          <span class="block w-6 h-0.5 bg-[#EDE5D8] transition-all"></span>
+          <span class="block w-4 h-0.5 bg-[#EDE5D8] transition-all"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-[#100D08] flex-col items-center justify-center gap-6 hidden" aria-hidden="true">
+  <button id="mobile-close" class="absolute top-6 right-6 text-2xl text-[#EDE5D8] bg-transparent border-none cursor-pointer">✕</button>
+  {links.map(l => (
+    <a href={l.href} class="mobile-link font-display text-[3.5rem] text-[#EDE5D8] hover:text-[#E8520A] transition-colors tracking-wide">
+      {l.label}
+    </a>
+  ))}
+  <a href="#contacto" class="mobile-link btn-primary mt-4">Cotizar ahora</a>
+</div>
+
+<script>
+  const nav        = document.getElementById('main-nav')!;
+  const hamburger  = document.getElementById('hamburger')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  const mobileClose= document.getElementById('mobile-close')!;
+  const bar        = document.querySelector('.announcement-bar') as HTMLElement | null;
+
+  const barH = bar?.offsetHeight ?? 0;
+  document.documentElement.style.setProperty('--nav-top', `${barH}px`);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('bg-[rgba(16,13,8,0.96)]', 'backdrop-blur-md', 'border-b', 'border-[rgba(237,229,216,0.05)]', 'py-3');
+      nav.style.top = '0';
+    } else {
+      nav.classList.remove('bg-[rgba(16,13,8,0.96)]', 'backdrop-blur-md', 'border-b', 'border-[rgba(237,229,216,0.05)]', 'py-3');
+      nav.style.top = `${barH}px`;
+    }
+  });
+
+  const open  = () => { mobileMenu.classList.replace('hidden','flex'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
+  const close = () => { mobileMenu.classList.replace('flex','hidden'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+
+  hamburger.addEventListener('click', open);
+  mobileClose.addEventListener('click', close);
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', close));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector((a as HTMLAnchorElement).getAttribute('href')!);
+      if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 16, behavior: 'smooth' }); }
+    });
+  });
+</script>

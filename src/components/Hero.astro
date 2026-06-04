@@ -1,0 +1,85 @@
+---
+---
+
+<section id="hero" class="relative min-h-screen flex flex-col justify-end overflow-hidden bg-[#100D08]">
+
+  <!-- Warm grid -->
+  <div class="warm-grid absolute inset-0"></div>
+
+  <!-- Ambient warm light top-right -->
+  <div class="absolute top-0 right-0 w-[70vw] h-[70vh] pointer-events-none"
+       style="background: radial-gradient(ellipse at top right, rgba(232,82,10,0.10) 0%, transparent 65%);"></div>
+
+  <!-- Large ghost type — background branding -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
+    <span class="font-display text-[22vw] leading-none tracking-tighter text-[rgba(237,229,216,0.025)]">MOTOR</span>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-[1320px] mx-auto px-6 md:px-10 w-full pb-20 pt-40">
+
+    <!-- Top label -->
+    <div class="u1 mb-8">
+      <span class="tag-label">Taller &amp; Repuestos · Manizales, Caldas</span>
+    </div>
+
+    <!-- Main headline — garage style -->
+    <div class="u2 mb-6">
+      <h1 class="font-display leading-[0.88] tracking-tight"
+          style="font-size: clamp(5rem, 14vw, 13rem);">
+        <span class="block text-[#EDE5D8]">TU MOTO</span>
+        <span class="block" style="color:#E8520A; text-shadow: 0 0 120px rgba(232,82,10,0.3);">SIEMPRE</span>
+        <span class="block text-[#EDE5D8]">LISTA.</span>
+      </h1>
+    </div>
+
+    <!-- Subtitle row -->
+    <div class="u3 flex flex-col sm:flex-row sm:items-center gap-6 mb-12 max-w-[720px]">
+      <div class="h-px flex-shrink-0 w-12 bg-[#E8520A]"></div>
+      <p class="text-[0.95rem] leading-[1.75] text-[rgba(237,229,216,0.55)]">
+        Más de 8.000 repuestos en stock. Mecánicos certificados con diagnóstico electrónico. Envíos a todo Colombia. Garantía escrita en cada trabajo.
+      </p>
+    </div>
+
+    <!-- CTAs + stats -->
+    <div class="u4 flex flex-wrap items-center gap-5 mb-16">
+      <a href="#catalogo" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Ver repuestos
+      </a>
+      <a href="#contacto" class="btn-outline">
+        Cotizar servicio →
+      </a>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="u5 flex flex-wrap gap-8 pt-8 border-t border-[rgba(237,229,216,0.07)]">
+      {[
+        { n: '+8.000', l: 'Repuestos en stock' },
+        { n: '+500',   l: 'Clientes al mes' },
+        { n: '3 meses',l: 'Garantía de taller' },
+        { n: '15 años',l: 'De experiencia' },
+      ].map(s => (
+        <div>
+          <div class="font-display text-[2.2rem] leading-none text-[#E8520A]">{s.n}</div>
+          <div class="text-[0.68rem] font-medium tracking-[0.1em] uppercase text-[rgba(237,229,216,0.35)] mt-1">{s.l}</div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 right-10 hidden lg:flex flex-col items-center gap-3">
+    <div class="scroll-bar w-px h-14 bg-gradient-to-b from-[#E8520A] to-transparent"></div>
+    <span class="text-[0.58rem] tracking-[0.2em] uppercase text-[rgba(237,229,216,0.2)] rotate-90 origin-center translate-y-4">scroll</span>
+  </div>
+
+  <!-- Corner badge -->
+  <div class="absolute top-32 right-8 hidden lg:block">
+    <div class="border border-[rgba(232,82,10,0.3)] text-[#E8520A] text-[0.65rem] font-bold tracking-[0.15em] uppercase px-4 py-2 rotate-3">
+      REPUESTOS OEM
+    </div>
+  </div>
+
+</section>

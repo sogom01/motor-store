@@ -1,0 +1,94 @@
+---
+const categorias = [
+  { slug: 'motor',      name: 'Motor &\nTransmisión', refs: '+1.200', icon: '⚙', featured: true },
+  { slug: 'frenos',     name: 'Frenos &\nSuspensión', refs: '+900',   icon: '🔩', featured: false },
+  { slug: 'electrico',  name: 'Sistema\nEléctrico',   refs: '+1.500', icon: '⚡', featured: false },
+  { slug: 'carroceria', name: 'Carrocería\n& Plásticos',refs: '+800', icon: '🏍', featured: false },
+  { slug: 'filtros',    name: 'Filtros &\nLubricantes',refs: '+600',  icon: '🛢', featured: false },
+  { slug: 'accesorios', name: 'Accesorios\n& Tuning',  refs: '+2.000',icon: '🔧', featured: false },
+];
+
+const marcas = ['Honda','Yamaha','Suzuki','Kawasaki','Bajaj','AKT','KTM','TVS','Benelli','Royal Enfield'];
+---
+
+<section id="catalogo" class="py-24 lg:py-32 bg-[#100D08] relative">
+  <!-- Top rule -->
+  <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(to right, #E8520A, rgba(232,82,10,0.1) 60%, transparent);"></div>
+
+  <div class="max-w-[1320px] mx-auto px-6 md:px-10">
+
+    <!-- Section header -->
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 reveal">
+      <div>
+        <span class="tag-label mb-4 inline-flex">Catálogo de repuestos</span>
+        <h2 class="font-display leading-[0.9]" style="font-size: clamp(2.8rem, 6vw, 5rem);">
+          <span class="text-[#EDE5D8]">TODO LO QUE</span><br>
+          <span style="color:#E8520A;">TU MOTO NECESITA</span>
+        </h2>
+      </div>
+      <div class="flex flex-col gap-3 lg:items-end">
+        <p class="text-[0.85rem] text-[rgba(237,229,216,0.45)] max-w-[320px] lg:text-right leading-relaxed">
+          Si no lo tenemos en stock, lo conseguimos en 3–7 días para cualquier marca y modelo.
+        </p>
+        <a href="#contacto" class="btn-outline" style="padding:0.6rem 1.4rem; font-size:0.72rem; width:fit-content;">
+          Consultar repuesto →
+        </a>
+      </div>
+    </div>
+
+    <!-- Category grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
+      {categorias.map((cat, i) => (
+        <a href="#contacto"
+           class={`product-card group relative flex flex-col justify-between p-6 lg:p-8 border cursor-pointer reveal d${Math.min(i+1,5)}
+             ${cat.featured
+               ? 'border-[rgba(232,82,10,0.5)] bg-[#1C1308] lg:col-span-1'
+               : 'border-[rgba(237,229,216,0.06)] bg-[#181208] hover:border-[rgba(232,82,10,0.25)] hover:bg-[#1C1308]'}
+           `}
+           style={cat.featured ? 'box-shadow: inset 0 0 0 1px rgba(232,82,10,0.15);' : ''}
+        >
+          {cat.featured && (
+            <div class="absolute top-0 left-0 right-0 h-0.5 bg-[#E8520A]"></div>
+          )}
+
+          <!-- Top -->
+          <div class="flex items-start justify-between mb-8 lg:mb-12">
+            <span class="text-[2rem]">{cat.icon}</span>
+            <span class={`text-[0.62rem] font-bold tracking-[0.12em] uppercase px-2.5 py-1 border
+              ${cat.featured ? 'border-[rgba(232,82,10,0.4)] text-[#E8520A] bg-[rgba(232,82,10,0.08)]' : 'border-[rgba(237,229,216,0.08)] text-[rgba(237,229,216,0.35)] group-hover:text-[rgba(237,229,216,0.6)] group-hover:border-[rgba(232,82,10,0.2)]'}
+              transition-colors`}>
+              {cat.refs} ref.
+            </span>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <h3 class={`font-display text-[1.6rem] lg:text-[1.9rem] leading-[1] tracking-wide whitespace-pre-line mb-3
+              ${cat.featured ? 'text-[#E8520A]' : 'text-[#EDE5D8] group-hover:text-[#EDE5D8]'}`}>
+              {cat.name}
+            </h3>
+            <div class="flex items-center gap-2 text-[0.7rem] font-bold tracking-widest uppercase text-[rgba(232,82,10,0)] group-hover:text-[rgba(232,82,10,0.8)] transition-all -translate-x-1 group-hover:translate-x-0">
+              Consultar →
+            </div>
+          </div>
+
+        </a>
+      ))}
+    </div>
+
+    <!-- Marcas strip -->
+    <div class="reveal border border-[rgba(237,229,216,0.05)] bg-[#141008] p-6">
+      <div class="flex flex-wrap items-center gap-x-1 gap-y-2">
+        <span class="text-[0.62rem] font-bold tracking-[0.14em] uppercase text-[rgba(237,229,216,0.25)] mr-4 whitespace-nowrap">Marcas:</span>
+        {marcas.map((m, i) => (
+          <>
+            <span class="text-[0.8rem] font-medium text-[rgba(237,229,216,0.4)] hover:text-[#EDE5D8] transition-colors cursor-default">{m}</span>
+            {i < marcas.length - 1 && <span class="text-[rgba(237,229,216,0.12)] text-sm">·</span>}
+          </>
+        ))}
+        <span class="ml-2 text-[0.72rem] text-[rgba(232,82,10,0.7)]">y más...</span>
+      </div>
+    </div>
+
+  </div>
+</section>
