@@ -1,34 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
-import AnnouncementBar from '../components/AnnouncementBar.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
 import Catalogo from '../components/Catalogo.astro';
-import Valor from '../components/Valor.astro';
-import Proceso from '../components/Proceso.astro';
-import Testimonios from '../components/Testimonios.astro';
-import Destacado from '../components/Destacado.astro';
+import SobreNosotros from '../components/SobreNosotros.astro';
+import Marcas from '../components/Marcas.astro';
 import FAQ from '../components/FAQ.astro';
 import Contacto from '../components/Contacto.astro';
 import Footer from '../components/Footer.astro';
 import ScrollReveal from '../components/ScrollReveal.astro';
+import WhatsApp from '../components/WhatsApp.astro';
 ---
 
 <Base>
-  <div class="announcement-bar">
-    <AnnouncementBar />
-  </div>
   <Nav />
   <main>
     <Hero />
+    <Marquee />
     <Catalogo />
-    <Valor />
-    <Proceso />
-    <Testimonios />
-    <Destacado />
+    <SobreNosotros />
+    <Marcas />
     <FAQ />
     <Contacto />
   </main>
   <Footer />
   <ScrollReveal />
+  <WhatsApp />
 </Base>

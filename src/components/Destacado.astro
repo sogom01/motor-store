@@ -8,26 +8,30 @@ const checks = [
 ];
 ---
 
-<section id="garantia" class="py-24 lg:py-32 bg-[#100D08] relative overflow-hidden">
+<section id="garantia" class="py-24 lg:py-32 bg-[#080808] relative overflow-hidden">
+
+  <!-- Side accent -->
+  <div class="absolute top-0 right-0 w-[1px] h-full bg-gradient-to-b from-transparent via-[rgba(255,82,0,0.2)] to-transparent"></div>
+
   <div class="max-w-[1320px] mx-auto px-6 md:px-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
       <!-- Left -->
       <div class="reveal-left">
         <span class="tag-label mb-6 inline-flex">La diferencia</span>
-        <h2 class="font-display leading-[0.9] mb-8" style="font-size: clamp(3rem, 6vw, 5.5rem);">
-          <span class="text-[#EDE5D8]">MECÁNICA</span><br>
-          <span style="color:#E8520A;">CON GARANTÍA</span><br>
-          <span class="text-[#EDE5D8]">REAL.</span>
+        <h2 class="font-display leading-[0.88] mb-8" style="font-size: clamp(3rem, 6vw, 5.5rem);">
+          <span class="block text-white">MECÁNICA</span>
+          <span class="block text-[#FF5200]">CON GARANTÍA</span>
+          <span class="block text-white">REAL.</span>
         </h2>
-        <p class="text-[0.9rem] leading-[1.8] text-[rgba(237,229,216,0.5)] mb-10 max-w-[460px]">
+        <p class="text-[0.9rem] leading-[1.8] text-[rgba(255,255,255,0.45)] mb-10 max-w-[460px]">
           No solo reparamos motos — construimos confianza. Cada trabajo sale documentado, cada precio se acuerda antes y cada pieza tiene origen verificado.
         </p>
         <ul class="flex flex-col gap-3 mb-10">
           {checks.map((c, i) => (
-            <li class={`flex items-start gap-3 text-[0.875rem] text-[rgba(237,229,216,0.65)] reveal d${i+1}`}>
-              <span class="w-5 h-5 shrink-0 mt-0.5 border border-[rgba(232,82,10,0.4)] bg-[rgba(232,82,10,0.08)] flex items-center justify-center">
-                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#E8520A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <li class={`flex items-start gap-3 text-[0.875rem] text-[rgba(255,255,255,0.6)] reveal d${i+1}`}>
+              <span class="w-5 h-5 shrink-0 mt-0.5 border border-[rgba(255,82,0,0.4)] bg-[rgba(255,82,0,0.08)] flex items-center justify-center">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5200" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </span>
@@ -38,35 +42,39 @@ const checks = [
         <a href="#contacto" class="btn-primary">Agendar servicio →</a>
       </div>
 
-      <!-- Right: two stacked cards -->
-      <div class="reveal-right space-y-4">
+      <!-- Right: comparison cards -->
+      <div class="reveal-right space-y-3">
 
-        <!-- "Sin nosotros" card -->
-        <div class="border border-[rgba(237,229,216,0.06)] bg-[#181208] p-7">
+        <!-- Sin Motor Store -->
+        <div class="border border-[rgba(255,255,255,0.07)] bg-[#111111] p-7">
           <div class="flex items-center gap-3 mb-5">
-            <span class="text-[0.62rem] font-bold tracking-[0.14em] uppercase text-[rgba(237,229,216,0.25)] border border-[rgba(237,229,216,0.1)] px-3 py-1">Sin Motor Store</span>
+            <span class="text-[0.6rem] font-bold tracking-[0.16em] uppercase text-[rgba(255,255,255,0.3)] border border-[rgba(255,255,255,0.1)] px-3 py-1">
+              Sin Motor Store
+            </span>
           </div>
           {['Diagnóstico incierto o de pago','Precios variables sin explicación','Sin garantía por escrito','Esperas largas e indefinidas'].map(t => (
-            <div class="flex items-center gap-3 py-2 border-b border-[rgba(237,229,216,0.04)] last:border-0">
-              <span class="text-[rgba(237,229,216,0.2)] font-bold">×</span>
-              <span class="text-[0.85rem] text-[rgba(237,229,216,0.3)]">{t}</span>
+            <div class="flex items-center gap-3 py-2.5 border-b border-[rgba(255,255,255,0.04)] last:border-0">
+              <span class="text-[rgba(255,255,255,0.2)] font-bold text-lg leading-none">×</span>
+              <span class="text-[0.85rem] text-[rgba(255,255,255,0.28)]">{t}</span>
             </div>
           ))}
         </div>
 
-        <!-- "Con nosotros" card — highlighted -->
-        <div class="border border-[rgba(232,82,10,0.4)] bg-[#1C1308] p-7 relative"
-             style="box-shadow: 0 0 40px rgba(232,82,10,0.08);">
-          <div class="absolute top-0 left-0 right-0 h-0.5 bg-[#E8520A]"></div>
+        <!-- Con Motor Store (highlighted) -->
+        <div class="border border-[rgba(255,82,0,0.45)] bg-[#111111] p-7 relative"
+             style="box-shadow: 0 0 40px rgba(255,82,0,0.07), inset 0 0 0 1px rgba(255,82,0,0.1);">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-[#FF5200]"></div>
           <div class="flex items-center gap-3 mb-5">
-            <span class="text-[0.62rem] font-bold tracking-[0.14em] uppercase text-[#E8520A] border border-[rgba(232,82,10,0.4)] px-3 py-1 bg-[rgba(232,82,10,0.08)]">Con Motor Store</span>
+            <span class="text-[0.6rem] font-bold tracking-[0.16em] uppercase text-[#FF5200] border border-[rgba(255,82,0,0.4)] px-3 py-1 bg-[rgba(255,82,0,0.08)]">
+              Con Motor Store ✓
+            </span>
           </div>
           {['Diagnóstico electrónico gratuito','Cotización fija sin sorpresas','Garantía 3 meses / 3.000 km','Entrega en el tiempo prometido'].map(t => (
-            <div class="flex items-center gap-3 py-2 border-b border-[rgba(232,82,10,0.1)] last:border-0">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E8520A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <div class="flex items-center gap-3 py-2.5 border-b border-[rgba(255,82,0,0.1)] last:border-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF5200" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
-              <span class="text-[0.875rem] text-[rgba(237,229,216,0.75)]">{t}</span>
+              <span class="text-[0.875rem] text-[rgba(255,255,255,0.75)]">{t}</span>
             </div>
           ))}
         </div>

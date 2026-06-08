@@ -1,85 +1,77 @@
 ---
+const stats = [
+  { n: '+8.000', l: 'Repuestos' },
+  { n: '+15',    l: 'Años de exp.' },
+  { n: '3 meses',l: 'Garantía' },
+  { n: '5★',     l: 'Calificación' },
+];
 ---
 
-<section id="hero" class="relative min-h-screen flex flex-col justify-end overflow-hidden bg-[#100D08]">
+<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden pt-[70px]"
+         style="background: #0D0D0D;">
 
-  <!-- Warm grid -->
-  <div class="warm-grid absolute inset-0"></div>
+  <!-- Grid lines background -->
+  <div class="absolute inset-0 pointer-events-none" style="
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(242,92,5,0.11) 0%, transparent 70%),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.014) 60px, rgba(255,255,255,0.014) 61px),
+      repeating-linear-gradient(0deg,  transparent, transparent 60px, rgba(255,255,255,0.014) 60px, rgba(255,255,255,0.014) 61px);
+  "></div>
 
-  <!-- Ambient warm light top-right -->
-  <div class="absolute top-0 right-0 w-[70vw] h-[70vh] pointer-events-none"
-       style="background: radial-gradient(ellipse at top right, rgba(232,82,10,0.10) 0%, transparent 65%);"></div>
-
-  <!-- Large ghost type — background branding -->
-  <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
-    <span class="font-display text-[22vw] leading-none tracking-tighter text-[rgba(237,229,216,0.025)]">MOTOR</span>
-  </div>
+  <!-- Noise texture -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.035]"
+       style="background-image: url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\"); background-size: 200px;"></div>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-[1320px] mx-auto px-6 md:px-10 w-full pb-20 pt-40">
+  <div class="relative z-10 w-full max-w-[1400px] mx-auto px-[5%] py-20">
 
-    <!-- Top label -->
-    <div class="u1 mb-8">
-      <span class="tag-label">Taller &amp; Repuestos · Manizales, Caldas</span>
-    </div>
+    <!-- Eyebrow -->
+    <p class="u1 section-label" style="color: #F25C05;">
+      Taller &amp; Repuestos · Manizales, Caldas
+    </p>
 
-    <!-- Main headline — garage style -->
-    <div class="u2 mb-6">
-      <h1 class="font-display leading-[0.88] tracking-tight"
-          style="font-size: clamp(5rem, 14vw, 13rem);">
-        <span class="block text-[#EDE5D8]">TU MOTO</span>
-        <span class="block" style="color:#E8520A; text-shadow: 0 0 120px rgba(232,82,10,0.3);">SIEMPRE</span>
-        <span class="block text-[#EDE5D8]">LISTA.</span>
-      </h1>
-    </div>
+    <!-- Headline -->
+    <h1 class="u2 font-display leading-[0.88] tracking-[2px] mt-4 mb-6"
+        style="font-size: clamp(4rem, 13vw, 10.5rem);">
+      <span class="block text-white">TU MOTO</span>
+      <span class="block text-outline">SIEMPRE</span>
+      <span class="block" style="color: #F25C05;">LISTA.</span>
+    </h1>
 
-    <!-- Subtitle row -->
-    <div class="u3 flex flex-col sm:flex-row sm:items-center gap-6 mb-12 max-w-[720px]">
-      <div class="h-px flex-shrink-0 w-12 bg-[#E8520A]"></div>
-      <p class="text-[0.95rem] leading-[1.75] text-[rgba(237,229,216,0.55)]">
-        Más de 8.000 repuestos en stock. Mecánicos certificados con diagnóstico electrónico. Envíos a todo Colombia. Garantía escrita en cada trabajo.
-      </p>
-    </div>
+    <!-- Sub -->
+    <p class="u3 font-body text-[1.05rem] font-light leading-[1.75]"
+       style="color: #8A8A8A; max-width: 460px; margin-bottom: 2.5rem;">
+      Más de 8.000 repuestos en stock para todas las marcas. Mecánicos certificados,
+      diagnóstico electrónico y envíos a toda Colombia.
+    </p>
 
-    <!-- CTAs + stats -->
-    <div class="u4 flex flex-wrap items-center gap-5 mb-16">
+    <!-- CTAs -->
+    <div class="u4 flex flex-wrap gap-4 mb-20">
       <a href="#catalogo" class="btn-primary">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        Ver repuestos
+        Explorar Tienda
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
       </a>
-      <a href="#contacto" class="btn-outline">
-        Cotizar servicio →
-      </a>
+      <a href="#nosotros" class="btn-secondary">Conocer el Taller</a>
     </div>
 
-    <!-- Stats strip -->
-    <div class="u5 flex flex-wrap gap-8 pt-8 border-t border-[rgba(237,229,216,0.07)]">
-      {[
-        { n: '+8.000', l: 'Repuestos en stock' },
-        { n: '+500',   l: 'Clientes al mes' },
-        { n: '3 meses',l: 'Garantía de taller' },
-        { n: '15 años',l: 'De experiencia' },
-      ].map(s => (
+    <!-- Stats -->
+    <div class="u5 flex flex-wrap gap-10 pt-8" style="border-top: 1px solid #1E1E1E;">
+      {stats.map(s => (
         <div>
-          <div class="font-display text-[2.2rem] leading-none text-[#E8520A]">{s.n}</div>
-          <div class="text-[0.68rem] font-medium tracking-[0.1em] uppercase text-[rgba(237,229,216,0.35)] mt-1">{s.l}</div>
+          <div class="font-display text-[2.6rem] leading-none" style="color: #F25C05; letter-spacing: 1px;">{s.n}</div>
+          <div class="font-condensed text-[0.72rem] font-medium tracking-[0.18em] uppercase mt-1" style="color: #8A8A8A;">{s.l}</div>
         </div>
       ))}
     </div>
-
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 right-10 hidden lg:flex flex-col items-center gap-3">
-    <div class="scroll-bar w-px h-14 bg-gradient-to-b from-[#E8520A] to-transparent"></div>
-    <span class="text-[0.58rem] tracking-[0.2em] uppercase text-[rgba(237,229,216,0.2)] rotate-90 origin-center translate-y-4">scroll</span>
-  </div>
-
-  <!-- Corner badge -->
-  <div class="absolute top-32 right-8 hidden lg:block">
-    <div class="border border-[rgba(232,82,10,0.3)] text-[#E8520A] text-[0.65rem] font-bold tracking-[0.15em] uppercase px-4 py-2 rotate-3">
-      REPUESTOS OEM
-    </div>
+  <div class="absolute bottom-10 right-[5%] flex flex-col items-center gap-2"
+       style="color: #8A8A8A; font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; writing-mode: vertical-rl;">
+    <div class="scroll-line w-px h-16" style="background: linear-gradient(to bottom, #F25C05, transparent);"></div>
+    Scroll
   </div>
 
 </section>

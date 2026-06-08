@@ -1,0 +1,23 @@
+---
+const items = [
+  'Diagnóstico Gratuito',
+  'Envío a Todo Colombia',
+  'Repuestos Originales',
+  'Garantía 3 Meses',
+  '+8.000 Referencias',
+  'Taller Certificado',
+  'Pago Contra Entrega',
+  'Respuesta en 2 Horas',
+];
+---
+
+<div class="overflow-hidden select-none" style="background: #F25C05; padding: 13px 0;">
+  <div class="marquee-track items-center">
+    {[...items, ...items].map(item => (
+      <span class="inline-flex items-center gap-6 mx-6 font-display text-white tracking-[4px] text-[0.95rem]">
+        {item}
+        <span class="w-[5px] h-[5px] rounded-full shrink-0" style="background: rgba(255,255,255,0.45);"></span>
+      </span>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,37 @@
+---
+const marcas = [
+  'Honda', 'Yamaha', 'Suzuki', 'Kawasaki',
+  'Bajaj', 'AKT', 'KTM', 'TVS',
+  'Benelli', 'Royal Enfield', 'Hero', 'Haojue',
+];
+---
+
+<section id="marcas" style="background: #FFFFFF; padding: 100px 5%;">
+  <div class="max-w-[1400px] mx-auto">
+
+    <!-- Header centrado -->
+    <div class="text-center mb-14 reveal">
+      <p class="section-label center" style="color:#F25C05; justify-content:center;">Partners Oficiales</p>
+      <h2 class="section-title dark mt-2">MARCAS QUE<br>MANEJAMOS</h2>
+    </div>
+
+    <!-- Brand grid -->
+    <div class="reveal"
+         style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1px; background: #E8E8E8; border: 1px solid #E8E8E8;">
+      {marcas.map((m, i) => (
+        <div class={`brand-item flex items-center justify-center py-9 px-4 reveal d${Math.min(i+1,5)}`}
+             style="background: #FFFFFF;">
+          <span class="brand-name font-display text-[1.3rem] tracking-[3px]"
+                style="color: #8A8A8A; letter-spacing: 3px;">{m}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom note -->
+    <p class="text-center font-condensed text-[0.78rem] tracking-widest uppercase mt-6 reveal"
+       style="color:#8A8A8A;">
+      ¿No ves tu marca? <a href="#contacto" class="text-[#F25C05] hover:underline">Consúltanos →</a>
+    </p>
+
+  </div>
+</section>

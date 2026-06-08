@@ -1,9 +1,22 @@
 ---
+const items = [
+  { icon: '⚡', text: 'Diagnóstico GRATIS en tu primera visita' },
+  { icon: '🚚', text: 'Envíos a todo Colombia' },
+  { icon: '🛡', text: 'Garantía 3 meses / 3.000 km' },
+  { icon: '📦', text: '+8.000 repuestos en stock' },
+  { icon: '📍', text: 'Manizales · Lun–Sáb 8am–6pm' },
+  { icon: '🏍', text: 'Honda · Yamaha · Bajaj · Kawasaki · AKT' },
+];
 ---
-<div class="announcement-bar bg-[#E8520A] text-[#100D08] text-center py-2.5 text-[0.72rem] font-bold tracking-[0.08em]">
-  🔧 Diagnóstico GRATIS en tu primera visita
-  <span class="opacity-50 mx-3">·</span>
-  Envío a todo Colombia
-  <span class="opacity-50 mx-3">·</span>
-  📍 Manizales, Caldas — Lun–Sáb 8am–6pm
+
+<div class="announcement-bar bg-[#FF5200] overflow-hidden py-2 select-none">
+  <div class="marquee-track">
+    {[...items, ...items].map(item => (
+      <span class="inline-flex items-center gap-2 mx-10 text-[0.68rem] font-bold tracking-[0.12em] text-[#080808] whitespace-nowrap uppercase">
+        <span class="text-[0.8rem]">{item.icon}</span>
+        {item.text}
+        <span class="w-px h-3 bg-[rgba(0,0,0,0.2)] ml-4"></span>
+      </span>
+    ))}
+  </div>
 </div>

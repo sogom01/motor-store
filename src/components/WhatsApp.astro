@@ -1,0 +1,35 @@
+---
+---
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/573000000000?text=Hola%2C%20necesito%20información%20sobre%20repuestos%20y%20servicios"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Contactar por WhatsApp"
+   id="whatsapp-fab"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-[0_8px_32px_rgba(37,211,102,0.4)] transition-all duration-300">
+
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12.05 2.025C6.495 2.025 2 6.52 2 12.075c0 1.79.467 3.469 1.28 4.924L2 22l5.162-1.252A10.02 10.02 0 0 0 12.05 22.1c5.554 0 10.05-4.495 10.05-10.05s-4.496-10.025-10.05-10.025zm0 18.45a8.4 8.4 0 0 1-4.54-1.324l-.325-.193-3.066.743.784-2.99-.21-.346A8.39 8.39 0 0 1 3.65 12.075c0-4.633 3.768-8.4 8.4-8.4s8.4 3.767 8.4 8.4-3.768 8.4-8.4 8.4z"/>
+  </svg>
+</a>
+
+<!-- Tooltip label (shows on first load) -->
+<div id="wa-tooltip"
+     class="fixed bottom-[5.5rem] right-6 z-50 bg-[#080808] border border-[rgba(255,255,255,0.1)] text-white text-[0.72rem] font-bold tracking-wide px-4 py-2 whitespace-nowrap shadow-xl transition-all duration-500"
+     style="opacity: 0; transform: translateY(6px);">
+  💬 Escríbenos por WhatsApp
+</div>
+
+<script>
+  const tooltip = document.getElementById('wa-tooltip')!;
+  setTimeout(() => {
+    tooltip.style.opacity = '1';
+    tooltip.style.transform = 'translateY(0)';
+    setTimeout(() => {
+      tooltip.style.opacity = '0';
+      tooltip.style.transform = 'translateY(6px)';
+    }, 3500);
+  }, 2500);
+</script>

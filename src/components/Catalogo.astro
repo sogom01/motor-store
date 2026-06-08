@@ -1,92 +1,171 @@
 ---
+/* 5 categorías → primera tall (rowspan 2) + 4 normales */
 const categorias = [
-  { slug: 'motor',      name: 'Motor &\nTransmisión', refs: '+1.200', icon: '⚙', featured: true },
-  { slug: 'frenos',     name: 'Frenos &\nSuspensión', refs: '+900',   icon: '🔩', featured: false },
-  { slug: 'electrico',  name: 'Sistema\nEléctrico',   refs: '+1.500', icon: '⚡', featured: false },
-  { slug: 'carroceria', name: 'Carrocería\n& Plásticos',refs: '+800', icon: '🏍', featured: false },
-  { slug: 'filtros',    name: 'Filtros &\nLubricantes',refs: '+600',  icon: '🛢', featured: false },
-  { slug: 'accesorios', name: 'Accesorios\n& Tuning',  refs: '+2.000',icon: '🔧', featured: false },
+  {
+    slug: 'motor', name: 'Motor &\nTransmisión', refs: '+1.200 Productos',
+    img: '/images/motor.jpg',
+    bg: 'linear-gradient(135deg, #0f0f2e 0%, #151540 50%, #0a1060 100%)',
+    tall: true,
+  },
+  {
+    slug: 'frenos', name: 'Frenos &\nSuspensión', refs: '+900 Productos',
+    img: '/images/frenos.jpg',
+    bg: 'linear-gradient(135deg, #1a1205 0%, #2d1f00 50%, #3d2800 100%)',
+    tall: false,
+  },
+  {
+    slug: 'electrico', name: 'Sistema\nEléctrico', refs: '+1.500 Productos',
+    img: '/images/Cableado.jpg',
+    bg: 'linear-gradient(135deg, #0d1b0d 0%, #1a2e1a 50%, #122212 100%)',
+    tall: false,
+  },
+  {
+    slug: 'carroceria', name: 'Carrocería\n& Plásticos', refs: '+800 Productos',
+    img: '/images/Carenados.jpg',
+    bg: 'linear-gradient(135deg, #1a0505 0%, #2e0d0d 50%, #3d1212 100%)',
+    tall: false,
+  },
+  {
+    slug: 'accesorios', name: 'Accesorios\n& Tuning', refs: '+2.000 Productos',
+    img: '/images/cascos.jpg',
+    bg: 'linear-gradient(135deg, #050d1a 0%, #0d1a2e 50%, #0a1540 100%)',
+    tall: false,
+  },
 ];
 
-const marcas = ['Honda','Yamaha','Suzuki','Kawasaki','Bajaj','AKT','KTM','TVS','Benelli','Royal Enfield'];
+const productos = [
+  {
+    brand: 'Yuasa',
+    name: 'Batería YTZ7S 12V — Honda / Yamaha / Suzuki',
+    price: '$185.000',
+    badge: 'Más vendido',
+    badgeDark: false,
+    img: '/images/bateria.jpg',
+    bg: 'linear-gradient(135deg, #1a1a1a, #2d2d2d)',
+  },
+  {
+    brand: 'Brembo',
+    name: 'Pastillas de Freno OE Delantera — Motos Sport',
+    price: '$78.000',
+    badge: 'Nuevo',
+    badgeDark: false,
+    img: '/images/pastillas.jpg',
+    bg: 'linear-gradient(135deg, #f5ece0, #ede0cc)',
+  },
+  {
+    brand: 'Motul',
+    name: 'Aceite 4T 10W-40 Technosynthese 1L',
+    price: '$65.000',
+    badge: '',
+    badgeDark: false,
+    img: '/images/aceite.jpg',
+    bg: 'linear-gradient(135deg, #e8f0f5, #d0e0ed)',
+  },
+  {
+    brand: 'NGK',
+    name: 'Bujía Iridium IX BR9EIX — Alta Performance',
+    price: '$42.000',
+    badge: '-15%',
+    badgeDark: true,
+    img: '/images/bugia.jpg',
+    bg: 'linear-gradient(135deg, #f0f0f0, #e0e0e0)',
+  },
+];
 ---
 
-<section id="catalogo" class="py-24 lg:py-32 bg-[#100D08] relative">
-  <!-- Top rule -->
-  <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(to right, #E8520A, rgba(232,82,10,0.1) 60%, transparent);"></div>
+<section id="catalogo" style="background: #F2F2F2; padding: 100px 5%;">
+  <div class="max-w-[1400px] mx-auto">
 
-  <div class="max-w-[1320px] mx-auto px-6 md:px-10">
-
-    <!-- Section header -->
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 reveal">
+    <!-- Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 reveal">
       <div>
-        <span class="tag-label mb-4 inline-flex">Catálogo de repuestos</span>
-        <h2 class="font-display leading-[0.9]" style="font-size: clamp(2.8rem, 6vw, 5rem);">
-          <span class="text-[#EDE5D8]">TODO LO QUE</span><br>
-          <span style="color:#E8520A;">TU MOTO NECESITA</span>
-        </h2>
+        <p class="section-label" style="color:#F25C05;">Catálogo</p>
+        <h2 class="section-title dark">EXPLORA POR<br>CATEGORÍA</h2>
       </div>
-      <div class="flex flex-col gap-3 lg:items-end">
-        <p class="text-[0.85rem] text-[rgba(237,229,216,0.45)] max-w-[320px] lg:text-right leading-relaxed">
-          Si no lo tenemos en stock, lo conseguimos en 3–7 días para cualquier marca y modelo.
-        </p>
-        <a href="#contacto" class="btn-outline" style="padding:0.6rem 1.4rem; font-size:0.72rem; width:fit-content;">
-          Consultar repuesto →
-        </a>
-      </div>
+      <a href="#contacto" class="btn-primary self-start lg:self-end">Consultar →</a>
     </div>
 
-    <!-- Category grid -->
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
-      {categorias.map((cat, i) => (
+    <!-- Category grid: 3 cols, first tall -->
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap: 1.5px; min-height: 480px;">
+
+      <!-- Tall first card -->
+      <a href="#contacto"
+         class="cat-card reveal d1"
+         style="grid-row: span 2; aspect-ratio: auto; min-height: 400px;">
+        <div class="cat-bg" style={`background-image: url('${categorias[0].img}'); background-size: cover; background-position: center; background-color: #1a1a2e;`}></div>
+        <div class="cat-overlay"></div>
+        <div class="cat-info">
+          <div class="cat-name" style="white-space: pre-line;">{categorias[0].name}</div>
+          <div class="cat-count">{categorias[0].refs}</div>
+        </div>
+        <div class="cat-arrow">→</div>
+      </a>
+
+      <!-- Other 4 cards -->
+      {categorias.slice(1).map((cat, i) => (
         <a href="#contacto"
-           class={`product-card group relative flex flex-col justify-between p-6 lg:p-8 border cursor-pointer reveal d${Math.min(i+1,5)}
-             ${cat.featured
-               ? 'border-[rgba(232,82,10,0.5)] bg-[#1C1308] lg:col-span-1'
-               : 'border-[rgba(237,229,216,0.06)] bg-[#181208] hover:border-[rgba(232,82,10,0.25)] hover:bg-[#1C1308]'}
-           `}
-           style={cat.featured ? 'box-shadow: inset 0 0 0 1px rgba(232,82,10,0.15);' : ''}
-        >
-          {cat.featured && (
-            <div class="absolute top-0 left-0 right-0 h-0.5 bg-[#E8520A]"></div>
-          )}
-
-          <!-- Top -->
-          <div class="flex items-start justify-between mb-8 lg:mb-12">
-            <span class="text-[2rem]">{cat.icon}</span>
-            <span class={`text-[0.62rem] font-bold tracking-[0.12em] uppercase px-2.5 py-1 border
-              ${cat.featured ? 'border-[rgba(232,82,10,0.4)] text-[#E8520A] bg-[rgba(232,82,10,0.08)]' : 'border-[rgba(237,229,216,0.08)] text-[rgba(237,229,216,0.35)] group-hover:text-[rgba(237,229,216,0.6)] group-hover:border-[rgba(232,82,10,0.2)]'}
-              transition-colors`}>
-              {cat.refs} ref.
-            </span>
+           class={`cat-card reveal d${i + 2}`}
+           style="aspect-ratio: 4/3;">
+          <div class="cat-bg" style={`background-image: url('${cat.img}'); background-size: cover; background-position: center; background-color: #1a1a1a;`}></div>
+          <div class="cat-overlay"></div>
+          <div class="cat-info">
+            <div class="cat-name" style="white-space: pre-line;">{cat.name}</div>
+            <div class="cat-count">{cat.refs}</div>
           </div>
-
-          <!-- Name -->
-          <div>
-            <h3 class={`font-display text-[1.6rem] lg:text-[1.9rem] leading-[1] tracking-wide whitespace-pre-line mb-3
-              ${cat.featured ? 'text-[#E8520A]' : 'text-[#EDE5D8] group-hover:text-[#EDE5D8]'}`}>
-              {cat.name}
-            </h3>
-            <div class="flex items-center gap-2 text-[0.7rem] font-bold tracking-widest uppercase text-[rgba(232,82,10,0)] group-hover:text-[rgba(232,82,10,0.8)] transition-all -translate-x-1 group-hover:translate-x-0">
-              Consultar →
-            </div>
-          </div>
-
+          <div class="cat-arrow">→</div>
         </a>
       ))}
     </div>
 
-    <!-- Marcas strip -->
-    <div class="reveal border border-[rgba(237,229,216,0.05)] bg-[#141008] p-6">
-      <div class="flex flex-wrap items-center gap-x-1 gap-y-2">
-        <span class="text-[0.62rem] font-bold tracking-[0.14em] uppercase text-[rgba(237,229,216,0.25)] mr-4 whitespace-nowrap">Marcas:</span>
-        {marcas.map((m, i) => (
-          <>
-            <span class="text-[0.8rem] font-medium text-[rgba(237,229,216,0.4)] hover:text-[#EDE5D8] transition-colors cursor-default">{m}</span>
-            {i < marcas.length - 1 && <span class="text-[rgba(237,229,216,0.12)] text-sm">·</span>}
-          </>
+    <!-- Productos destacados -->
+    <div class="mt-20">
+      <p class="section-label reveal" style="color:#F25C05;">Lo Más Vendido</p>
+      <h2 class="section-title dark reveal">PRODUCTOS<br>DESTACADOS</h2>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 2rem; margin-top: 3rem;">
+        {productos.map((p, i) => (
+          <div class={`product-card reveal d${i + 1}`}>
+
+            <!-- Image area -->
+            <div class="relative" style="aspect-ratio: 4/3; overflow: hidden;">
+              <img
+                src={p.img}
+                alt={p.name}
+                loading="lazy"
+                style={`width:100%; height:100%; object-fit:cover; display:block; background: ${p.bg};`}
+                onerror={`this.style.display='none'; this.parentElement.style.background='${p.bg}'; this.parentElement.classList.add('flex','items-center','justify-center'); this.parentElement.innerHTML='<span style="font-size:4rem">' + (i===0?'🔋':i===1?'🔴':i===2?'🛢️':'⚡') + '</span>';`}
+              />
+              {p.badge && (
+                <span class="absolute top-3 left-3 font-condensed text-[0.62rem] font-bold tracking-[2px] uppercase text-white px-2.5 py-1"
+                      style={`background: ${p.badgeDark ? '#0D0D0D' : '#F25C05'};`}>
+                  {p.badge}
+                </span>
+              )}
+            </div>
+
+            <!-- Info -->
+            <div style="padding: 1.2rem 1.5rem 1.5rem;">
+              <p class="font-condensed text-[0.68rem] font-bold tracking-[3px] uppercase mb-1" style="color:#F25C05;">{p.brand}</p>
+              <p class="font-condensed text-[1.1rem] font-semibold leading-snug" style="color:#0D0D0D;">{p.name}</p>
+
+              <div class="flex items-center justify-between mt-4 pt-4" style="border-top: 1px solid #F0F0F0;">
+                <div>
+                  <div class="font-display text-[1.6rem] tracking-wide" style="color:#0D0D0D; letter-spacing: 1px;">{p.price}</div>
+                  <div class="font-condensed text-[0.72rem] font-medium tracking-wide" style="color:#8A8A8A; letter-spacing: 1px;">COP · IVA incluido</div>
+                </div>
+                <button
+                   class="w-10 h-10 flex items-center justify-center text-white font-bold transition-all"
+                   style="background:#0D0D0D; font-size:1.2rem; border:none; cursor:pointer;"
+                   title="Consultar"
+                   onmouseenter="this.style.background='#F25C05'; this.style.transform='scale(1.1)';"
+                   onmouseleave="this.style.background='#0D0D0D'; this.style.transform='scale(1)';">
+                  +
+                </button>
+              </div>
+            </div>
+
+          </div>
         ))}
-        <span class="ml-2 text-[0.72rem] text-[rgba(232,82,10,0.7)]">y más...</span>
       </div>
     </div>
 

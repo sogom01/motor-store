@@ -1,62 +1,69 @@
 ---
 const links = [
-  { href: '#catalogo',    label: 'Repuestos' },
-  { href: '#servicios',   label: 'Taller' },
-  { href: '#testimonios', label: 'Clientes' },
+  { href: '#inicio',      label: 'Inicio' },
+  { href: '#catalogo',    label: 'Tienda' },
+  { href: '#nosotros',    label: 'Nosotros' },
+  { href: '#marcas',      label: 'Marcas' },
   { href: '#faq',         label: 'FAQ' },
 ];
 ---
 
-<nav id="main-nav" class="fixed left-0 right-0 z-50 transition-all duration-300 py-4 bg-[#100D08] border-b border-[rgba(237,229,216,0.05)]" style="top: var(--nav-top, 40px);">
-  <div class="max-w-[1320px] mx-auto px-6 md:px-10">
-    <div class="flex items-center justify-between">
+<nav id="main-nav"
+     class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] h-[70px] transition-all duration-300"
+     style="background: rgba(13,13,13,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #1E1E1E;">
 
-      <a href="#" class="flex items-center gap-3 group">
-        <!-- Logo mark -->
-        <div class="w-8 h-8 bg-[#E8520A] flex items-center justify-center shrink-0 group-hover:bg-[#B53D00] transition-colors">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#100D08" stroke-width="2.5" stroke-linecap="round">
-            <circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/>
-            <path d="M5 14l3-7h8l3 7"/><path d="M8 7l2-4h4l2 4"/>
-          </svg>
-        </div>
-        <span class="font-display text-[1.5rem] tracking-[0.08em] text-[#EDE5D8]">MOTOR STORE</span>
-      </a>
+  <!-- Logo -->
+  <a href="#inicio"
+     class="font-display text-[1.75rem] tracking-[3px] text-white hover:text-white transition-colors select-none">
+    MOTOR<span class="text-[#F25C05]">STORE</span>
+  </a>
 
-      <ul class="hidden md:flex items-center gap-8 list-none">
-        {links.map(l => (
-          <li>
-            <a href={l.href}
-               class="text-[0.72rem] font-bold tracking-[0.12em] uppercase text-[rgba(237,229,216,0.5)] hover:text-[#EDE5D8] transition-colors relative after:absolute after:bottom-[-3px] after:left-0 after:h-px after:w-0 after:bg-[#E8520A] after:transition-all hover:after:w-full">
-              {l.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      <div class="flex items-center gap-3">
-        <a href="#contacto" class="hidden md:inline-flex btn-primary" style="padding: 0.6rem 1.4rem; font-size:0.72rem;">
-          Cotizar ahora
+  <!-- Desktop links -->
+  <ul class="hidden md:flex items-center gap-8 list-none">
+    {links.map(l => (
+      <li>
+        <a href={l.href}
+           class="font-condensed text-[0.82rem] font-semibold tracking-[0.14em] uppercase text-[#8A8A8A] hover:text-white transition-colors relative
+                  after:absolute after:bottom-[-4px] after:left-0 after:h-px after:w-0 after:bg-[#F25C05] after:transition-all hover:after:w-full">
+          {l.label}
         </a>
-        <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1 bg-transparent border-none cursor-pointer" aria-label="Abrir menú" aria-expanded="false">
-          <span class="block w-6 h-0.5 bg-[#EDE5D8] transition-all"></span>
-          <span class="block w-6 h-0.5 bg-[#EDE5D8] transition-all"></span>
-          <span class="block w-4 h-0.5 bg-[#EDE5D8] transition-all"></span>
-        </button>
-      </div>
+      </li>
+    ))}
+  </ul>
 
-    </div>
+  <!-- CTA + hamburger -->
+  <div class="flex items-center gap-4">
+    <a href="#contacto"
+       class="hidden md:inline-flex items-center gap-2 bg-[#F25C05] hover:bg-[#C44A04] text-white font-condensed text-[0.78rem] font-bold tracking-[0.14em] uppercase px-5 py-2 transition-colors">
+      Contacto
+    </a>
+
+    <button id="hamburger"
+            class="md:hidden flex flex-col gap-[5px] p-1 bg-transparent border-none cursor-pointer"
+            aria-label="Abrir menú" aria-expanded="false">
+      <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+    </button>
   </div>
 </nav>
 
-<!-- Mobile menu -->
-<div id="mobile-menu" class="fixed inset-0 z-40 bg-[#100D08] flex-col items-center justify-center gap-6 hidden" aria-hidden="true">
-  <button id="mobile-close" class="absolute top-6 right-6 text-2xl text-[#EDE5D8] bg-transparent border-none cursor-pointer">✕</button>
+<!-- Mobile menu overlay -->
+<div id="mobile-menu"
+     class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-8"
+     style="background: rgba(13,13,13,0.98);"
+     aria-hidden="true">
+  <button id="mobile-close"
+          class="absolute top-5 right-[5%] bg-transparent border-none text-white text-3xl cursor-pointer hover:text-[#F25C05] transition-colors">
+    ✕
+  </button>
   {links.map(l => (
-    <a href={l.href} class="mobile-link font-display text-[3.5rem] text-[#EDE5D8] hover:text-[#E8520A] transition-colors tracking-wide">
+    <a href={l.href}
+       class="mobile-link font-display text-[3.5rem] tracking-[4px] text-white hover:text-[#F25C05] transition-colors">
       {l.label}
     </a>
   ))}
-  <a href="#contacto" class="mobile-link btn-primary mt-4">Cotizar ahora</a>
+  <a href="#contacto" class="mobile-link btn-primary mt-2">Contacto</a>
 </div>
 
 <script>
@@ -64,20 +71,6 @@ const links = [
   const hamburger  = document.getElementById('hamburger')!;
   const mobileMenu = document.getElementById('mobile-menu')!;
   const mobileClose= document.getElementById('mobile-close')!;
-  const bar        = document.querySelector('.announcement-bar') as HTMLElement | null;
-
-  const barH = bar?.offsetHeight ?? 0;
-  document.documentElement.style.setProperty('--nav-top', `${barH}px`);
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      nav.classList.add('bg-[rgba(16,13,8,0.96)]', 'backdrop-blur-md', 'border-b', 'border-[rgba(237,229,216,0.05)]', 'py-3');
-      nav.style.top = '0';
-    } else {
-      nav.classList.remove('bg-[rgba(16,13,8,0.96)]', 'backdrop-blur-md', 'border-b', 'border-[rgba(237,229,216,0.05)]', 'py-3');
-      nav.style.top = `${barH}px`;
-    }
-  });
 
   const open  = () => { mobileMenu.classList.replace('hidden','flex'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
   const close = () => { mobileMenu.classList.replace('flex','hidden'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
@@ -89,7 +82,10 @@ const links = [
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const t = document.querySelector((a as HTMLAnchorElement).getAttribute('href')!);
-      if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 16, behavior: 'smooth' }); }
+      if (t) {
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 8, behavior: 'smooth' });
+      }
     });
   });
 </script>
