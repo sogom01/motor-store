@@ -5,6 +5,7 @@ const links = [
   { href: '#nosotros', label: 'Nosotros'  },
   { href: '#marcas',   label: 'Marcas'    },
   { href: '#faq',      label: 'FAQ'       },
+  { href: '#contacto', label: 'Contacto'  },
 ];
 ---
 
@@ -12,26 +13,17 @@ const links = [
      class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] transition-all duration-300"
      style="height:70px; background: rgba(13,13,13,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid #1E1E1E;">
 
-  <!-- Logo: isotipo SVG + wordmark -->
-  <a href="#inicio" class="flex items-center gap-3 select-none group" aria-label="Motor Store — Inicio">
-
-    <!-- Isotipo moto (SVG inline) -->
+  <!-- Logo -->
+  <a href="#inicio" class="flex items-center gap-3 select-none" aria-label="Motor Store">
     <svg width="32" height="22" viewBox="0 0 64 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="shrink-0">
-      <!-- Rueda trasera -->
       <circle cx="12" cy="34" r="9"  stroke="#F25C05" stroke-width="3"/>
       <circle cx="12" cy="34" r="3"  fill="#F25C05"/>
-      <!-- Rueda delantera -->
       <circle cx="52" cy="34" r="9"  stroke="#F25C05" stroke-width="3"/>
       <circle cx="52" cy="34" r="3"  fill="#F25C05"/>
-      <!-- Chasis -->
       <path d="M12 34 L22 14 L38 11 L52 34" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- Tanque -->
       <path d="M24 14 L38 10 L42 20 L24 20 Z" fill="#F25C05"/>
-      <!-- Manillar -->
       <line x1="46" y1="18" x2="56" y2="10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
     </svg>
-
-    <!-- Wordmark -->
     <span class="font-display text-[1.7rem] tracking-[3px] text-white leading-none">
       MOTOR<span style="color:#F25C05;">STORE</span>
     </span>
@@ -39,7 +31,7 @@ const links = [
 
   <!-- Desktop links -->
   <ul class="hidden md:flex items-center gap-8 list-none">
-    {links.map(l => (
+    {links.slice(0, -1).map(l => (
       <li>
         <a href={l.href}
            data-nav-link
@@ -52,7 +44,7 @@ const links = [
     ))}
   </ul>
 
-  <!-- CTA + hamburger -->
+  <!-- CTA desktop + hamburger móvil -->
   <div class="flex items-center gap-4">
     <a href="#contacto"
        class="hidden md:inline-flex items-center gap-2 font-condensed text-[0.78rem] font-bold tracking-[0.14em] uppercase px-5 py-2 transition-all"
@@ -62,89 +54,150 @@ const links = [
       Contacto
     </a>
 
+    <!-- Hamburger — solo visible en móvil -->
     <button id="hamburger"
-            class="md:hidden flex flex-col gap-[5px] p-1 bg-transparent border-none cursor-pointer"
+            class="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8 bg-transparent border-none cursor-pointer z-[70] relative"
             aria-label="Abrir menú" aria-expanded="false">
-      <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-      <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-      <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span id="ham-1" class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+      <span id="ham-2" class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+      <span id="ham-3" class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile menu overlay -->
+<!-- Mobile menu — z-[60] para estar sobre el nav (z-50) -->
 <div id="mobile-menu"
-     class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-8"
-     style="background: rgba(13,13,13,0.98);"
-     aria-hidden="true">
+     aria-hidden="true"
+     style="
+       position: fixed;
+       inset: 0;
+       z-index: 60;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       gap: 1.5rem;
+       background: rgba(13,13,13,0.99);
+       opacity: 0;
+       pointer-events: none;
+       transition: opacity 0.3s ease;
+     ">
+
+  <!-- Botón cerrar -->
   <button id="mobile-close"
-          class="absolute top-5 right-[5%] bg-transparent border-none text-white text-3xl cursor-pointer transition-colors"
-          style=""
+          aria-label="Cerrar menú"
+          style="
+            position: absolute;
+            top: 1.2rem; right: 5%;
+            background: transparent;
+            border: none;
+            color: #8A8A8A;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+            padding: 0.5rem;
+          "
           onmouseenter="this.style.color='#F25C05';"
-          onmouseleave="this.style.color='white';">
+          onmouseleave="this.style.color='#8A8A8A';">
     ✕
   </button>
+
+  <!-- Links -->
   {links.map(l => (
     <a href={l.href}
-       class="mobile-link font-display text-[3.5rem] tracking-[4px] text-white transition-colors"
+       class="menu-link font-display tracking-[4px] text-white transition-colors"
+       style="font-size: clamp(2rem, 8vw, 3.5rem); text-decoration: none;"
        onmouseenter="this.style.color='#F25C05';"
        onmouseleave="this.style.color='white';">
       {l.label}
     </a>
   ))}
-  <a href="#contacto" class="mobile-link btn-primary mt-2">Contacto</a>
+
+  <!-- Línea inferior -->
+  <p class="font-condensed text-[0.68rem] tracking-widest uppercase" style="color:#333; margin-top:1rem;">
+    Manizales, Colombia · Lun–Sáb 8am–6pm
+  </p>
 </div>
 
 <script>
-  const nav        = document.getElementById('main-nav')!;
-  const hamburger  = document.getElementById('hamburger')!;
-  const mobileMenu = document.getElementById('mobile-menu')!;
-  const mobileClose= document.getElementById('mobile-close')!;
+  const nav    = document.getElementById('main-nav')!;
+  const burger = document.getElementById('hamburger')!;
+  const menu   = document.getElementById('mobile-menu')!;
+  const closeBtn = document.getElementById('mobile-close')!;
+  const ham1   = document.getElementById('ham-1')!;
+  const ham2   = document.getElementById('ham-2')!;
+  const ham3   = document.getElementById('ham-3')!;
 
-  // ── Mobile menu ──
-  const openMenu  = () => { mobileMenu.classList.replace('hidden','flex'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
-  const closeMenu = () => { mobileMenu.classList.replace('flex','hidden'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+  let isOpen = false;
 
-  hamburger.addEventListener('click', openMenu);
-  mobileClose.addEventListener('click', closeMenu);
-  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+  function openMenu() {
+    isOpen = true;
+    menu.style.opacity       = '1';
+    menu.style.pointerEvents = 'auto';
+    menu.setAttribute('aria-hidden', 'false');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    // Animar hamburgesa → X
+    ham1.style.transform = 'translateY(7px) rotate(45deg)';
+    ham2.style.opacity   = '0';
+    ham3.style.transform = 'translateY(-7px) rotate(-45deg)';
+  }
 
-  // ── Smooth scroll ──
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector((a as HTMLAnchorElement).getAttribute('href')!);
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({ top: (target as HTMLElement).getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 8, behavior: 'smooth' });
-      }
+  function closeMenu() {
+    isOpen = false;
+    menu.style.opacity       = '0';
+    menu.style.pointerEvents = 'none';
+    menu.setAttribute('aria-hidden', 'true');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    // Revertir hamburgesa
+    ham1.style.transform = '';
+    ham2.style.opacity   = '1';
+    ham3.style.transform = '';
+  }
+
+  burger.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+  closeBtn.addEventListener('click', closeMenu);
+
+  // Cerrar al hacer clic en cualquier link del menú
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
     });
   });
 
-  // ── Nav scroll activo por sección ──
-  const sections  = document.querySelectorAll('section[id], footer[id]');
-  const navLinks  = document.querySelectorAll<HTMLAnchorElement>('a[data-nav-link]');
+  // ── Smooth scroll para TODOS los links de ancla ──
+  document.addEventListener('click', (e) => {
+    const target = (e.target as HTMLElement).closest('a[href^="#"]') as HTMLAnchorElement | null;
+    if (!target) return;
+    const dest = document.querySelector(target.getAttribute('href')!);
+    if (!dest) return;
+    e.preventDefault();
+    const top = (dest as HTMLElement).getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 8;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+
+  // ── Nav scroll activo ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('a[data-nav-link]');
 
   function setActive(id: string) {
     navLinks.forEach(a => {
-      const isActive = a.getAttribute('href') === `#${id}`;
-      a.style.color = isActive ? '#FFFFFF' : '#6A6A6A';
-      const underline = a.querySelector('.nav-underline') as HTMLElement | null;
-      if (underline) underline.style.width = isActive ? '100%' : '0';
+      const active = a.getAttribute('href') === `#${id}`;
+      a.style.color = active ? '#FFFFFF' : '#6A6A6A';
+      const u = a.querySelector('.nav-underline') as HTMLElement | null;
+      if (u) u.style.width = active ? '100%' : '0';
     });
   }
 
   const sectionObs = new IntersectionObserver(
-    entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) setActive((e.target as HTMLElement).id);
-      });
-    },
+    entries => entries.forEach(e => { if (e.isIntersecting) setActive((e.target as HTMLElement).id); }),
     { rootMargin: '-40% 0px -50% 0px' }
   );
-
   sections.forEach(s => sectionObs.observe(s));
 
-  // ── Nav sombra en scroll ──
+  // ── Sombra en scroll ──
   window.addEventListener('scroll', () => {
     nav.style.boxShadow = window.scrollY > 30 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
   }, { passive: true });
