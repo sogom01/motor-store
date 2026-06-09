@@ -1,21 +1,40 @@
 ---
 const links = [
-  { href: '#inicio',      label: 'Inicio' },
-  { href: '#catalogo',    label: 'Tienda' },
-  { href: '#nosotros',    label: 'Nosotros' },
-  { href: '#marcas',      label: 'Marcas' },
-  { href: '#faq',         label: 'FAQ' },
+  { href: '#inicio',   label: 'Inicio'    },
+  { href: '#catalogo', label: 'Tienda'    },
+  { href: '#nosotros', label: 'Nosotros'  },
+  { href: '#marcas',   label: 'Marcas'    },
+  { href: '#faq',      label: 'FAQ'       },
 ];
 ---
 
 <nav id="main-nav"
-     class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] h-[70px] transition-all duration-300"
-     style="background: rgba(13,13,13,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #1E1E1E;">
+     class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] transition-all duration-300"
+     style="height:70px; background: rgba(13,13,13,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid #1E1E1E;">
 
-  <!-- Logo -->
-  <a href="#inicio"
-     class="font-display text-[1.75rem] tracking-[3px] text-white hover:text-white transition-colors select-none">
-    MOTOR<span class="text-[#F25C05]">STORE</span>
+  <!-- Logo: isotipo SVG + wordmark -->
+  <a href="#inicio" class="flex items-center gap-3 select-none group" aria-label="Motor Store — Inicio">
+
+    <!-- Isotipo moto (SVG inline) -->
+    <svg width="32" height="22" viewBox="0 0 64 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="shrink-0">
+      <!-- Rueda trasera -->
+      <circle cx="12" cy="34" r="9"  stroke="#F25C05" stroke-width="3"/>
+      <circle cx="12" cy="34" r="3"  fill="#F25C05"/>
+      <!-- Rueda delantera -->
+      <circle cx="52" cy="34" r="9"  stroke="#F25C05" stroke-width="3"/>
+      <circle cx="52" cy="34" r="3"  fill="#F25C05"/>
+      <!-- Chasis -->
+      <path d="M12 34 L22 14 L38 11 L52 34" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Tanque -->
+      <path d="M24 14 L38 10 L42 20 L24 20 Z" fill="#F25C05"/>
+      <!-- Manillar -->
+      <line x1="46" y1="18" x2="56" y2="10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+
+    <!-- Wordmark -->
+    <span class="font-display text-[1.7rem] tracking-[3px] text-white leading-none">
+      MOTOR<span style="color:#F25C05;">STORE</span>
+    </span>
   </a>
 
   <!-- Desktop links -->
@@ -23,9 +42,11 @@ const links = [
     {links.map(l => (
       <li>
         <a href={l.href}
-           class="font-condensed text-[0.82rem] font-semibold tracking-[0.14em] uppercase text-[#8A8A8A] hover:text-white transition-colors relative
-                  after:absolute after:bottom-[-4px] after:left-0 after:h-px after:w-0 after:bg-[#F25C05] after:transition-all hover:after:w-full">
+           data-nav-link
+           class="nav-link font-condensed text-[0.82rem] font-semibold tracking-[0.14em] uppercase transition-colors relative"
+           style="color:#6A6A6A;">
           {l.label}
+          <span class="nav-underline absolute bottom-[-4px] left-0 h-px w-0 transition-all duration-300" style="background:#F25C05;"></span>
         </a>
       </li>
     ))}
@@ -34,7 +55,10 @@ const links = [
   <!-- CTA + hamburger -->
   <div class="flex items-center gap-4">
     <a href="#contacto"
-       class="hidden md:inline-flex items-center gap-2 bg-[#F25C05] hover:bg-[#C44A04] text-white font-condensed text-[0.78rem] font-bold tracking-[0.14em] uppercase px-5 py-2 transition-colors">
+       class="hidden md:inline-flex items-center gap-2 font-condensed text-[0.78rem] font-bold tracking-[0.14em] uppercase px-5 py-2 transition-all"
+       style="background:#F25C05; color:#fff;"
+       onmouseenter="this.style.background='#C44A04';"
+       onmouseleave="this.style.background='#F25C05';">
       Contacto
     </a>
 
@@ -54,12 +78,17 @@ const links = [
      style="background: rgba(13,13,13,0.98);"
      aria-hidden="true">
   <button id="mobile-close"
-          class="absolute top-5 right-[5%] bg-transparent border-none text-white text-3xl cursor-pointer hover:text-[#F25C05] transition-colors">
+          class="absolute top-5 right-[5%] bg-transparent border-none text-white text-3xl cursor-pointer transition-colors"
+          style=""
+          onmouseenter="this.style.color='#F25C05';"
+          onmouseleave="this.style.color='white';">
     ✕
   </button>
   {links.map(l => (
     <a href={l.href}
-       class="mobile-link font-display text-[3.5rem] tracking-[4px] text-white hover:text-[#F25C05] transition-colors">
+       class="mobile-link font-display text-[3.5rem] tracking-[4px] text-white transition-colors"
+       onmouseenter="this.style.color='#F25C05';"
+       onmouseleave="this.style.color='white';">
       {l.label}
     </a>
   ))}
@@ -72,20 +101,51 @@ const links = [
   const mobileMenu = document.getElementById('mobile-menu')!;
   const mobileClose= document.getElementById('mobile-close')!;
 
-  const open  = () => { mobileMenu.classList.replace('hidden','flex'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
-  const close = () => { mobileMenu.classList.replace('flex','hidden'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+  // ── Mobile menu ──
+  const openMenu  = () => { mobileMenu.classList.replace('hidden','flex'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
+  const closeMenu = () => { mobileMenu.classList.replace('flex','hidden'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
 
-  hamburger.addEventListener('click', open);
-  mobileClose.addEventListener('click', close);
-  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', close));
+  hamburger.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 
+  // ── Smooth scroll ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const t = document.querySelector((a as HTMLAnchorElement).getAttribute('href')!);
-      if (t) {
+      const target = document.querySelector((a as HTMLAnchorElement).getAttribute('href')!);
+      if (target) {
         e.preventDefault();
-        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 8, behavior: 'smooth' });
+        window.scrollTo({ top: (target as HTMLElement).getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 8, behavior: 'smooth' });
       }
     });
   });
+
+  // ── Nav scroll activo por sección ──
+  const sections  = document.querySelectorAll('section[id], footer[id]');
+  const navLinks  = document.querySelectorAll<HTMLAnchorElement>('a[data-nav-link]');
+
+  function setActive(id: string) {
+    navLinks.forEach(a => {
+      const isActive = a.getAttribute('href') === `#${id}`;
+      a.style.color = isActive ? '#FFFFFF' : '#6A6A6A';
+      const underline = a.querySelector('.nav-underline') as HTMLElement | null;
+      if (underline) underline.style.width = isActive ? '100%' : '0';
+    });
+  }
+
+  const sectionObs = new IntersectionObserver(
+    entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) setActive((e.target as HTMLElement).id);
+      });
+    },
+    { rootMargin: '-40% 0px -50% 0px' }
+  );
+
+  sections.forEach(s => sectionObs.observe(s));
+
+  // ── Nav sombra en scroll ──
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 30 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+  }, { passive: true });
 </script>

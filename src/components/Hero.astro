@@ -7,46 +7,58 @@ const stats = [
 ];
 ---
 
-<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden pt-[70px]"
-         style="background: #0D0D0D;">
+<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden"
+         style="background: #0D0D0D; padding-top: 70px;">
 
-  <!-- Grid lines background -->
-  <div class="absolute inset-0 pointer-events-none" style="
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(242,92,5,0.11) 0%, transparent 70%),
-      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.014) 60px, rgba(255,255,255,0.014) 61px),
-      repeating-linear-gradient(0deg,  transparent, transparent 60px, rgba(255,255,255,0.014) 60px, rgba(255,255,255,0.014) 61px);
-  "></div>
+  <!-- Imagen de fondo con overlay -->
+  <div class="absolute inset-0">
+    <img
+      src="/images/motor.jpg"
+      alt=""
+      aria-hidden="true"
+      style="width:100%; height:100%; object-fit:cover; object-position: center; opacity: 0.28; display:block;"
+    />
+    <!-- Gradiente sobre la imagen para legibilidad -->
+    <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.80) 45%, rgba(13,13,13,0.45) 100%);"></div>
+    <!-- Grid lines sutil encima -->
+    <div class="absolute inset-0" style="
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px),
+        repeating-linear-gradient(0deg,  transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px);
+    "></div>
+  </div>
 
-  <!-- Noise texture -->
-  <div class="absolute inset-0 pointer-events-none opacity-[0.035]"
-       style="background-image: url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\"); background-size: 200px;"></div>
+  <!-- Glow naranja lateral -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 55% 60% at 75% 50%, rgba(242,92,5,0.13) 0%, transparent 70%);"></div>
 
   <!-- Content -->
-  <div class="relative z-10 w-full max-w-[1400px] mx-auto px-[5%] py-20">
+  <div class="relative z-10 w-full max-w-[1400px] mx-auto hero-content-pad py-20">
+
+    <!-- Bloque de texto limitado a la mitad izquierda -->
+    <div style="max-width: 680px;">
 
     <!-- Eyebrow -->
-    <p class="u1 section-label" style="color: #F25C05;">
+    <p class="hero-u1 section-label" style="color: #F25C05; opacity: 0;">
       Taller &amp; Repuestos · Manizales, Caldas
     </p>
 
     <!-- Headline -->
-    <h1 class="u2 font-display leading-[0.88] tracking-[2px] mt-4 mb-6"
-        style="font-size: clamp(4rem, 13vw, 10.5rem);">
+    <h1 class="hero-u2 font-display leading-[0.88] tracking-[2px] mt-4 mb-6"
+        style="font-size: clamp(4.5rem, 13vw, 11rem); opacity: 0;">
       <span class="block text-white">TU MOTO</span>
-      <span class="block text-outline">SIEMPRE</span>
+      <span class="block" style="-webkit-text-stroke: 1.5px rgba(255,255,255,0.22); color: transparent;">SIEMPRE</span>
       <span class="block" style="color: #F25C05;">LISTA.</span>
     </h1>
 
     <!-- Sub -->
-    <p class="u3 font-body text-[1.05rem] font-light leading-[1.75]"
-       style="color: #8A8A8A; max-width: 460px; margin-bottom: 2.5rem;">
+    <p class="hero-u3 font-body text-[1.05rem] font-light leading-[1.75]"
+       style="color: #8A8A8A; max-width: 460px; margin-bottom: 2.5rem; opacity: 0;">
       Más de 8.000 repuestos en stock para todas las marcas. Mecánicos certificados,
       diagnóstico electrónico y envíos a toda Colombia.
     </p>
 
     <!-- CTAs -->
-    <div class="u4 flex flex-wrap gap-4 mb-20">
+    <div class="hero-u4 flex flex-wrap gap-4 mb-20" style="opacity: 0;">
       <a href="#catalogo" class="btn-primary">
         Explorar Tienda
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -56,8 +68,10 @@ const stats = [
       <a href="#nosotros" class="btn-secondary">Conocer el Taller</a>
     </div>
 
+    </div><!-- /text block -->
+
     <!-- Stats -->
-    <div class="u5 flex flex-wrap gap-10 pt-8" style="border-top: 1px solid #1E1E1E;">
+    <div class="hero-u5 flex flex-wrap gap-10 pt-8" style="border-top: 1px solid #1E1E1E; opacity: 0; max-width: 680px;">
       {stats.map(s => (
         <div>
           <div class="font-display text-[2.6rem] leading-none" style="color: #F25C05; letter-spacing: 1px;">{s.n}</div>
@@ -68,10 +82,32 @@ const stats = [
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-10 right-[5%] flex flex-col items-center gap-2"
-       style="color: #8A8A8A; font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; writing-mode: vertical-rl;">
+  <div class="absolute bottom-10 right-[5%] flex flex-col items-center gap-2 hero-u5"
+       style="color: #8A8A8A; font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; writing-mode: vertical-rl; opacity: 0;">
     <div class="scroll-line w-px h-16" style="background: linear-gradient(to bottom, #F25C05, transparent);"></div>
     Scroll
   </div>
 
 </section>
+
+<script>
+  // Animaciones de entrada del hero con delays escalonados
+  const heroEls: Record<string, number> = {
+    '.hero-u1': 80,
+    '.hero-u2': 200,
+    '.hero-u3': 380,
+    '.hero-u4': 520,
+    '.hero-u5': 750,
+  };
+
+  Object.entries(heroEls).forEach(([sel, delay]) => {
+    document.querySelectorAll(sel).forEach(el => {
+      setTimeout(() => {
+        (el as HTMLElement).style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        (el as HTMLElement).style.transform  = 'translateY(0)';
+        (el as HTMLElement).style.opacity    = '1';
+      }, delay);
+      (el as HTMLElement).style.transform = 'translateY(28px)';
+    });
+  });
+</script>

@@ -7,9 +7,9 @@ const valores = [
 ];
 ---
 
-<section id="nosotros" style="background: #0D0D0D; padding: 100px 5%; position: relative; overflow: hidden;">
+<section id="nosotros" class="sobre-section" style="background: #0D0D0D; position: relative; overflow: hidden;">
   <div class="max-w-[1400px] mx-auto">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+    <div class="sobre-grid">
 
       <!-- Left -->
       <div class="reveal-left">
@@ -49,8 +49,8 @@ const valores = [
         </div>
       </div>
 
-      <!-- Right: visual panel -->
-      <div class="reveal-right" style="position: relative;">
+      <!-- Right: visual panel (oculto en móvil y tablet) -->
+      <div class="reveal-right sobre-right-panel" style="position: relative;">
         <div style="position: relative; overflow: hidden; aspect-ratio: 3/4; background: #2A2A2A; display: flex; align-items: center; justify-content: center;">
           <!-- Imagen del taller — pon tu foto en /public/images/taller.jpg -->
           <img
@@ -79,14 +79,18 @@ const valores = [
 </section>
 
 <style>
-  /* Responsive: en móvil ocultar panel derecho */
-  @media (max-width: 1024px) {
-    #nosotros > div > div {
-      grid-template-columns: 1fr !important;
-      gap: 3rem !important;
-    }
-    #nosotros > div > div > div:last-child {
-      display: none;
-    }
+  .sobre-section { padding: 70px 5%; }
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .sobre-right-panel { display: none; }
+
+  @media (min-width: 1024px) {
+    .sobre-section { padding: 100px 5%; }
+    .sobre-grid { grid-template-columns: 1fr 1fr; gap: 6rem; }
+    .sobre-right-panel { display: block; }
   }
 </style>

@@ -102,6 +102,22 @@ a { text-decoration: none; color: inherit; }
 .section-label.center::before { display: none; }
 .section-label.center { justify-content: center; }
 
+/* ── Section padding responsive ── */
+.sec { padding: 70px 5%; }
+@media (min-width: 1024px) { .sec { padding: 100px 5%; } }
+
+/* ── Hero content padding ── */
+.hero-content-pad {
+  padding-left: 6%;
+  padding-right: 5%;
+}
+@media (min-width: 1024px) {
+  .hero-content-pad {
+    padding-left: clamp(3rem, 8%, 7rem);
+    padding-right: 5%;
+  }
+}
+
 /* ── Font utility classes (explicit fallback for Tailwind v4) ── */
 .font-display   { font-family: "Bebas Neue", sans-serif; }
 .font-condensed { font-family: "Barlow Condensed", sans-serif; }

@@ -1,83 +1,112 @@
 ---
-const items = [
-  { initials:'CA', name:'Carlos Andrade', city:'Manizales', rating:5,
-    text:'Llevé mi Yamaha MT con un problema que en otros talleres no lograban diagnosticar. En 20 minutos ya sabían exactamente qué era. Trabajo perfecto y a mitad de precio.' },
-  { initials:'LP', name:'Laura Patiño', city:'Pereira', rating:5,
-    text:'Busqué un repuesto para mi Bajaj Pulsar que "no había en Colombia". Me lo consiguieron en 3 días y lo enviaron hasta Pereira perfectamente empacado. Increíble.' },
-  { initials:'RG', name:'Ricardo Guerrero', city:'Manizales', rating:5,
-    text:'Tengo 6 motos de domicilios. Motor Store me las mantiene al día con precios preferenciales. Nunca he tenido una moto parada más de un día.' },
+const testimonios = [
+  {
+    nombre: 'Andrés Mejía',
+    ciudad: 'Manizales',
+    moto:   'Honda CB 190R',
+    texto:  'Llevé mi moto con un problema de encendido que otros talleres no habían podido resolver. En Motor Store lo diagnosticaron en minutos con el escáner OBD2 y en 2 horas ya estaba lista. Precio justo y garantía escrita.',
+    stars:  5,
+    inicial: 'A',
+    bg: '#0f2a42',
+  },
+  {
+    nombre: 'Valentina Ríos',
+    ciudad: 'Pereira',
+    moto:   'Yamaha FZ 2.0',
+    texto:  'Pedí los frenos por WhatsApp a las 9am y los tenía en casa antes de las 6pm. Repuestos originales, bien empacados y con factura. El mejor servicio de repuestos que he encontrado en el eje cafetero.',
+    stars:  5,
+    inicial: 'V',
+    bg: '#2a0f42',
+  },
+  {
+    nombre: 'Carlos Zuluaga',
+    ciudad: 'Armenia',
+    moto:   'Bajaj Pulsar NS200',
+    texto:  'La revisión técnico-mecánica incluye un reporte detallado por escrito. Aproveché y cambié el aceite y el filtro. Todo en menos de 3 horas. La atención es honesta, sin intentar cobrar cosas innecesarias.',
+    stars:  5,
+    inicial: 'C',
+    bg: '#0f2a18',
+  },
+  {
+    nombre: 'Laura Gómez',
+    ciudad: 'Manizales',
+    moto:   'AKT TT 150',
+    texto:  'Me explicaron todo sin apresurarse. Me mostraron cada repuesto que cambiaron y me enseñaron a revisar el nivel de aceite yo misma. Ese trato diferenciado es difícil de encontrar en cualquier taller.',
+    stars:  5,
+    inicial: 'L',
+    bg: '#42100f',
+  },
 ];
 ---
 
-<section id="testimonios" class="py-24 lg:py-32 bg-[#111111] relative overflow-hidden">
-
-  <!-- Accent glow -->
-  <div class="absolute bottom-0 left-0 w-[500px] h-[400px] pointer-events-none"
-       style="background: radial-gradient(ellipse at bottom left, rgba(255,82,0,0.06) 0%, transparent 65%);"></div>
-
-  <div class="max-w-[1320px] mx-auto px-6 md:px-10 relative z-10">
+<section id="testimonios" class="sec" style="background: #0D0D0D;">
+  <div class="max-w-[1400px] mx-auto">
 
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14 reveal">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 reveal">
       <div>
-        <span class="tag-label mb-5 inline-flex">Testimonios</span>
-        <h2 class="font-display leading-[0.88]" style="font-size: clamp(2.5rem, 5.5vw, 5rem);">
-          <span class="block text-white">CLIENTES QUE</span>
-          <span class="block text-[#FF5200]">VUELVEN.</span>
-        </h2>
+        <p class="section-label" style="color:#F25C05;">Testimonios</p>
+        <h2 class="section-title light">LO QUE DICEN<br>NUESTROS RIDERS</h2>
       </div>
-      <div class="flex items-center gap-3 pb-2">
-        <div class="flex gap-0.5">
-          {[...Array(5)].map(() => <span class="text-[#FF5200] text-lg">★</span>)}
-        </div>
+      <!-- Rating global -->
+      <div class="flex items-center gap-3 self-start lg:self-end pb-1 reveal">
+        <div class="font-display text-[3.5rem] leading-none" style="color:#F25C05;">4.9</div>
         <div>
-          <div class="text-white font-bold text-[0.85rem]">5.0</div>
-          <div class="text-[0.65rem] text-[rgba(255,255,255,0.35)] tracking-wider uppercase">Google Reviews</div>
+          <div class="flex gap-1 mb-1">
+            {[1,2,3,4,5].map(() => (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#F25C05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            ))}
+          </div>
+          <div class="font-condensed text-[0.68rem] tracking-widest uppercase" style="color:#555;">+200 reseñas verificadas</div>
         </div>
       </div>
     </div>
 
-    <!-- Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-      {items.map((t, i) => (
-        <div class={`group relative border border-[rgba(255,255,255,0.07)] bg-[#080808] p-8 hover:border-[rgba(255,82,0,0.3)] hover:bg-[#0e0e0e] transition-all overflow-hidden reveal d${i+1}`}>
-
-          <!-- Quote mark bg -->
-          <div class="absolute top-4 right-5 font-display text-[8rem] leading-none text-[rgba(255,82,0,0.04)] select-none pointer-events-none group-hover:text-[rgba(255,82,0,0.07)] transition-colors">"</div>
+    <!-- Grid de tarjetas -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.5px; background: #1A1A1A;">
+      {testimonios.map((t, i) => (
+        <article
+          class={`reveal d${i+1}`}
+          style="background: #111111; padding: 2rem; cursor: default; transition: background 0.3s;"
+          onmouseenter="this.style.background='#161616';"
+          onmouseleave="this.style.background='#111111';">
 
           <!-- Stars -->
-          <div class="flex gap-0.5 mb-5">
-            {[...Array(t.rating)].map(() => <span class="text-[#FF5200] text-sm">★</span>)}
+          <div class="flex gap-1 mb-5">
+            {Array.from({length: t.stars}).map(() => (
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="#F25C05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            ))}
           </div>
 
-          <!-- Text -->
-          <p class="text-[0.875rem] leading-[1.8] text-[rgba(255,255,255,0.6)] mb-8 relative z-10">
-            "{t.text}"
+          <!-- Comilla decorativa -->
+          <div class="font-display text-[6rem] leading-[0.6] mb-2 select-none pointer-events-none" style="color: rgba(242,92,5,0.08);">"</div>
+
+          <!-- Texto -->
+          <p class="font-body font-light leading-[1.75] mb-6" style="color:#8A8A8A; font-size:0.92rem;">
+            {t.texto}
           </p>
 
-          <!-- Author -->
-          <div class="flex items-center gap-3 pt-5 border-t border-[rgba(255,255,255,0.06)]">
-            <div class="w-10 h-10 bg-[rgba(255,82,0,0.1)] border border-[rgba(255,82,0,0.3)] flex items-center justify-center font-display text-[1rem] text-[#FF5200] shrink-0 group-hover:bg-[rgba(255,82,0,0.18)] transition-all">
-              {t.initials}
+          <!-- Autor -->
+          <div class="flex items-center gap-3 pt-5" style="border-top: 1px solid #1E1E1E;">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-display text-[1.1rem] text-white"
+                 style={`background: ${t.bg};`}>
+              {t.inicial}
             </div>
             <div>
-              <div class="text-[0.85rem] font-bold text-white">{t.name}</div>
-              <div class="text-[0.68rem] text-[rgba(255,255,255,0.3)] tracking-wide">{t.city}</div>
+              <div class="font-condensed text-[0.9rem] font-semibold tracking-wide text-white">{t.nombre}</div>
+              <div class="font-condensed text-[0.68rem] tracking-[2px] uppercase" style="color:#F25C05;">{t.moto} · {t.ciudad}</div>
             </div>
           </div>
-        </div>
+
+        </article>
       ))}
     </div>
 
-    <!-- Bottom CTA -->
-    <div class="mt-10 text-center reveal">
-      <p class="text-[0.82rem] text-[rgba(255,255,255,0.35)] mb-5">
-        Más de 500 clientes satisfechos cada mes en Manizales y toda Colombia
-      </p>
-      <a href="#contacto" class="btn-outline" style="font-size:0.75rem; padding:0.85rem 2rem;">
-        Únete a nuestros clientes →
-      </a>
-    </div>
+    <!-- CTA inferior -->
+    <p class="text-center font-condensed text-[0.78rem] tracking-widest uppercase mt-6 reveal" style="color:#555;">
+      Más de 500 clientes satisfechos cada mes ·
+      <a href="#contacto" style="color:#F25C05;" onmouseenter="this.style.textDecoration='underline';" onmouseleave="this.style.textDecoration='none';">Únete →</a>
+    </p>
 
   </div>
 </section>
