@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title?: string;
@@ -9,12 +9,12 @@ interface Props {
 }
 
 const {
-  title       = 'Motor Store — Repuestos & Taller Mecánico | Manizales',
-  description = 'Repuestos originales para todas las marcas. Taller mecánico especializado en Manizales. Diagnóstico electrónico, reparación y envíos a toda Colombia.',
-  ogImage     = '/images/motor.jpg',
+  title = "Tienda de motos — Repuestos & Taller Mecánico | Manizales",
+  description = "Repuestos originales para todas las marcas. Taller mecánico especializado en Manizales. Diagnóstico electrónico, reparación y envíos a toda Colombia.",
+  ogImage = "/images/motor.jpg",
 } = Astro.props;
 
-const canonical = 'https://motorstore.com.co';
+const canonical = "https://motorstore.com.co";
 ---
 
 <!doctype html>
@@ -23,26 +23,26 @@ const canonical = 'https://motorstore.com.co';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="robots"      content="index, follow" />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#F25C05" />
-    <link rel="canonical"    href={canonical} />
+    <link rel="canonical" href={canonical} />
 
     <!-- Open Graph / LinkedIn / WhatsApp -->
-    <meta property="og:type"        content="website" />
-    <meta property="og:url"         content={canonical} />
-    <meta property="og:title"       content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image"       content={`${canonical}${ogImage}`} />
-    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image" content={`${canonical}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale"      content="es_CO" />
-    <meta property="og:site_name"   content="Motor Store" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Motor Store" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image"       content={`${canonical}${ogImage}`} />
+    <meta name="twitter:image" content={`${canonical}${ogImage}`} />
 
     <title>{title}</title>
 
@@ -74,20 +74,31 @@ const canonical = 'https://motorstore.com.co';
   /* ── Page Loader ── */
   #page-loader {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
     height: 3px;
     pointer-events: none;
   }
   .loader-bar {
     height: 100%;
-    background: #F25C05;
+    background: #f25c05;
     width: 0%;
     animation: loaderFill 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
   @keyframes loaderFill {
-    0%   { width: 0%; opacity: 1; }
-    70%  { width: 85%; opacity: 1; }
-    100% { width: 100%; opacity: 0; }
+    0% {
+      width: 0%;
+      opacity: 1;
+    }
+    70% {
+      width: 85%;
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      opacity: 0;
+    }
   }
 </style>
